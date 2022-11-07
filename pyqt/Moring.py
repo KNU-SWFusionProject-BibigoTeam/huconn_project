@@ -18,11 +18,16 @@ class WindowClass(QMainWindow, form_class) :
         self.Button_test.clicked.connect(self.loadImageFromFile2)
 
         self.qPixmapFileVar = QPixmap()
-        self.qPixmapFileVar.load("Moring_test.jpeg")
+        self.qPixmapFileVar.load("Car3.png")
         self.qPixmapFileVar = self.qPixmapFileVar.scaled(1100, 669)
+
+
+
         self.label_test.setPixmap(self.qPixmapFileVar)
 
         self.label_test.setGeometry(190, 30, 1181, 669)
+        self.right_light.setGeometry(190, 30, 1181, 669)
+        
         self.Button_test.setGeometry(670, 750, 100, 100) # x,y,가로 세로
 
 
@@ -33,8 +38,8 @@ class WindowClass(QMainWindow, form_class) :
      if self.Button_test.isChecked():
           self.Button_test.setText("OFF")
           qPixmapFileVar = QPixmap()
-          qPixmapFileVar.load("testImage.png")
-          qPixmapFileVar = qPixmapFileVar.scaled(100, 100)
+          qPixmapFileVar.load("Car3_light.png")
+          qPixmapFileVar = qPixmapFileVar.scaled(1100, 669)
           self.right_light.setPixmap(qPixmapFileVar)
      else:
          self.Button_test.setText("ON")
