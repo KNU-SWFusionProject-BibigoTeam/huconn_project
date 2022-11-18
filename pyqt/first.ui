@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1006</width>
-    <height>792</height>
+    <width>748</width>
+    <height>844</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,198 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>640</y>
+     <y>790</y>
      <width>111</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>GotoSecond</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="insideCar">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>711</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lightOn">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>680</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>lightOn</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>790</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>790</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>P</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_3">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>790</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>N</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_4">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>790</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>D</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lightOff">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>680</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>lightOff</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="WindowOn">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>680</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>WindowOn</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="WindowOff">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>680</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>WindowOff</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DoorOff">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>680</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DoorOff</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DoorOn">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>680</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DoorOn</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="break_2">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>720</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>break</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="start">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>720</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>start</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clockshtion">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>720</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>clockshtion</string>
    </property>
   </widget>
  </widget>
