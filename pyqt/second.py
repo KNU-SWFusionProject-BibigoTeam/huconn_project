@@ -17,6 +17,7 @@ class secondwindow(QDialog, form_secondwindow):
    def initUI(self):
     self.setupUi(self)
     self.BackButton.clicked.connect(self.Home)
+    self.move(750,25)
 
 
 # light
@@ -27,7 +28,7 @@ class secondwindow(QDialog, form_secondwindow):
 
 
     if self.WindowOn.clicked:
-        self.WindowOff.setCheckable(False)
+        self.WindowOn.setCheckable(True)
         self.WindowOn.clicked.connect(self.funtion_windowOn)
 
 
@@ -44,7 +45,7 @@ class secondwindow(QDialog, form_secondwindow):
         self.DoorOn.clicked.connect(self.funtion_DoorOn)
 
     if self.DoorOff.clicked:
-        #self.DoorOn.setCheckable(False)
+        self.DoorOff.setCheckable(True)
         self.DoorOff.clicked.connect(self.funtion_DoorOff)
 
 
@@ -56,6 +57,12 @@ class secondwindow(QDialog, form_secondwindow):
 
 # ligth function
    def funtion_lightOn(self):
+
+    if self.WindowOff.isChecked() and self.DoorOn.isChecked():
+        self.base = QPixmap()
+        self.base.load("DoorAndWindowOpen.png")
+        self.base = self.base.scaled(851, 531)
+        self.label_base.setPixmap(self.base)
 
     if self.WindowOff.isChecked():
        self.base = QPixmap()
@@ -77,9 +84,15 @@ class secondwindow(QDialog, form_secondwindow):
         self.base = self.base.scaled(851, 531)
         self.label_base.setPixmap(self.base)
 
+    if self.DoorOff.isChecked():
+        self.base = QPixmap()
+        self.base.load("base.png")
+        self.base = self.base.scaled(851, 531)
+        self.label_base.setPixmap(self.base)
+
 
     self.light = QPixmap()
-    self.light.load("light_On.png")
+    self.light.load("UplightOn.png")
     self.light = self.light.scaled(261, 531)
     self.label_light.setPixmap(self.light)
 
@@ -89,12 +102,19 @@ class secondwindow(QDialog, form_secondwindow):
        self.label_light.setPixmap(self.light)
 
 
-# window function
+# window function 함수들에 조건문
    def funtion_windowOn(self):
        self.base = QPixmap()
        self.base.load("base.png")
        self.base = self.base.scaled(851, 531)
        self.label_base.setPixmap(self.base)
+
+       if self.DoorOn.isChecked():
+           self.doorOn = QPixmap()
+           self.doorOn.load("OpenDoor.png")
+           self.doorOn = self.doorOn.scaled(851, 531)
+           self.label_base.setPixmap(self.doorOn)
+
 
 
 
@@ -113,6 +133,13 @@ class secondwindow(QDialog, form_secondwindow):
        self.doorOn = self.doorOn.scaled(851, 531)
        self.label_base.setPixmap(self.doorOn)
 
+       if self.WindowOff.isChecked():
+           self.DoorOnAndWindowOpen = QPixmap()
+           self.DoorOnAndWindowOpen.load("DoorAndWindowOpen.png")
+           self.DoorOnAndWindowOpen = self.DoorOnAndWindowOpen.scaled(851, 531)
+           self.label_base.setPixmap(self.DoorOnAndWindowOpen)
+
+
 
    def funtion_DoorOff(self):
        if self.WindowOff.isChecked():
@@ -121,11 +148,22 @@ class secondwindow(QDialog, form_secondwindow):
            self.base = self.base.scaled(851, 531)
            self.label_base.setPixmap(self.base)
 
+
        else:
            self.base = QPixmap()
            self.base.load("base.png")
            self.base = self.base.scaled(851, 531)
            self.label_base.setPixmap(self.base)
+
+
+
+
+       if self.WindowOn.isChecked():
+           if self.WindowOff.isChecked():
+               self.base = QPixmap()
+               self.base.load("base.png")
+               self.base = self.base.scaled(851, 531)
+               self.label_base.setPixmap(self.base)
 
 
 
