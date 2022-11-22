@@ -4,6 +4,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
+from first import *
 
 form_secondwindow = uic.loadUiType("second.ui")[0]
 
@@ -12,6 +13,7 @@ class secondwindow(QDialog, form_secondwindow):
       super(secondwindow,self).__init__()
       self.initUI()
       self.show()
+      self.islight = False
 
 
    def initUI(self):
@@ -58,7 +60,7 @@ class secondwindow(QDialog, form_secondwindow):
 # ligth function
    def funtion_lightOn(self):
 
-    if self.WindowOff.isChecked() and self.DoorOn.isChecked():
+    if (self.WindowOn.isChecked() and self.DoorOn.isChecked()):
         self.base = QPixmap()
         self.base.load("DoorAndWindowOpen.png")
         self.base = self.base.scaled(851, 531)
@@ -96,10 +98,18 @@ class secondwindow(QDialog, form_secondwindow):
     self.light = self.light.scaled(261, 531)
     self.label_light.setPixmap(self.light)
 
+    self.first = MainWindow()
+    self.first.lightAction2()
+
    def funtion_lightOff(self):
        self.light = QPixmap()
        self.light.load("")
        self.label_light.setPixmap(self.light)
+
+       self.first = MainWindow()
+       self.first.lightActionOFF2()
+
+
 
 
 # window function 함수들에 조건문
