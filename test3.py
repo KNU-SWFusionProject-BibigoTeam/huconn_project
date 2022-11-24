@@ -14,17 +14,23 @@ def setup():
 
 # ButtonNumber = 5 기어 변속
 def checkInput(ButtonNumber):
-    if let[ButtonNumber] == 0:
-        let[ButtonNumber] = 1
-        print("On")
-    elif let[ButtonNumber] == 1:
-        let[ButtonNumber] = 0
-        print("Off")
-    elif ButtonNumber == 4: 
-    	let[ButtonNumber] = let[ButtonNumber] + 1 
+    if onOff[ButtonNumber] == 0:
+        onOff[ButtonNumber] = 1
+        print(onOff[ButtonNumber])
+    elif onOff[ButtonNumber] == 1:
+        onOff[ButtonNumber] = 0
+        print(onOff[ButtonNumber])
+        
+def checkGear(ButtonNumber):
+    if ButtonNumber == 4: 
+    	onOff[ButtonNumber] = onOff[ButtonNumber] + 1
+        if onOff[ButtonNumber] == 4:
+            onOff[ButtonNumber] = 1
+    print(onOff[ButtonNumber])        
   
 def loop():
 	
+    pwm = GPIO.PWM(Horn, 262)
 	while True:
 		
 		if GPIO.input(button[0]) == True:	# 라이트
@@ -47,14 +53,15 @@ def loop():
             time.sleep(0.2)
             print("Horn Button")
             time.sleep(0.2)
-            GPIO.output(Horn, True)
-		elif GPIO.input(button[3]) == False:	# 클락션
-            GPIO.output(Horn, False)
+            pwm.start(50.0)
+            time.sleep(1.5)
+            pwm.stop()
         elif GPIO.input(button[4]) == True:	# 기어
             time.sleep(0.2)
             print("Gear Button")
             time.sleep(0.2)
-            checkInput(4)
+            checkGear(4)
+            
         elif GPIO.input(button[5]) == True:	# 출발
             time.sleep(0.2)
             print("start Button")
@@ -80,8 +87,8 @@ def endprogram():
     	GPIO.cleanup()
      
 if __name__ == '__main__':
-	global let
-	let  = [0, 0, 0, 0, 0, 0, 0, 0, 0]	
+	global onOff
+	onOff  = [0, 0, 0, 0, 0, 0, 0, 0, 0]	
  
 	setup()
 	try:
