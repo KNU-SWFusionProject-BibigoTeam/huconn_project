@@ -19,7 +19,7 @@ class MainWindow(QMainWindow,form_main):
     super().__init__()
     self.initUI()
     self.show()
-
+    print("test")
 
 
 

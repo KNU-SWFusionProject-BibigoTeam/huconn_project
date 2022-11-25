@@ -5,48 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7f9f2a2-c1e6-4c8d-945a-8c82aef766eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pyqt/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyqt/.idea/GUItest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyqt/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyqt/FirstTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyqt/FirstTest2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyqt/Test5.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/.idea/GUItest.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/GUItest.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/Test1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/base1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/base2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/base3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/light1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/light2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/light3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/window_close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUItest/window_open.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pyqt/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/.idea/pythonProject6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pyqt/.idea/pythonProject6.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/HelloWorld.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/HelloWorld.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/Moring.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/Moring.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/Moring_test.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/PushButton.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/PushButton.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/base.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/button.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/button.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyqt/first.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyqt/first.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyqt/first.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pyqt/first.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/pixmapTest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/pixmapTest.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/testImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/testImage2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/window_close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyqt/window_open.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,14 +32,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/user/OneDrive/바탕 화면/huconn_project",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/OneDrive/바탕 화면/huconn_project&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\OneDrive\바탕 화면\huconn_project\pyqt" />
