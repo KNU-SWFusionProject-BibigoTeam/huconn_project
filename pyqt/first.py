@@ -6,6 +6,8 @@ from PyQt5 import uic
 import second
 from second import *
 
+## 화면에따라 사이즈가 바뀌게
+## 연결하면 새로 이미지 뜸
 
 
 form_main = uic.loadUiType("first.ui")[0]
@@ -20,7 +22,10 @@ class MainWindow(QMainWindow,form_main):
 
 
 
+
+
    def initUI(self):
+
        self.setupUi(self)
        self.pushButton.clicked.connect(self.button_Second)
       # self.second = secondwindow()
@@ -54,6 +59,7 @@ class MainWindow(QMainWindow,form_main):
 
 
        self.lightOn.clicked.connect(self.lightAction)
+       self.lightOff.clicked.connect(self.lightActionOFF)
 
    def Klaxon(self, state):
        if self.clockshtion.isChecked():
@@ -122,23 +128,34 @@ class MainWindow(QMainWindow,form_main):
 
    def lightAction(self):
         self.second = secondwindow()
-        self.second.funtion_lightOn()
+        self.second.funtion_lightOn2()
        # self.second.hide()
 
         self.qPixmapFileVar = QPixmap()
-        self.qPixmapFileVar.load("light_On.png")
+        self.qPixmapFileVar.load("insideCar_light.png")
         self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
         self.insideCar.setPixmap(self.qPixmapFileVar)
 
+   def lightActionOFF(self):
+       self.second = secondwindow()
+       self.second.funtion_lightOff2()
+
+
+       self.qPixmapFileVar = QPixmap()
+       self.qPixmapFileVar.load("carimage.png")
+       self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+       self.insideCar.setPixmap(self.qPixmapFileVar)
+
+
    def lightAction2(self):
        self.qPixmapFileVar = QPixmap()
-       self.qPixmapFileVar.load("light_On.png")
+       self.qPixmapFileVar.load("insideCar_light.png")
        self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
        self.insideCar.setPixmap(self.qPixmapFileVar)
 
    def lightActionOFF2(self):
        self.qPixmapFileVar = QPixmap()
-       self.qPixmapFileVar.load("")
+       self.qPixmapFileVar.load("carimage.png")
        self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
        self.insideCar.setPixmap(self.qPixmapFileVar)
 
