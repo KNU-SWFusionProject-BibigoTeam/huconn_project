@@ -2,14 +2,11 @@
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>748</width>
+    <width>825</width>
     <height>844</height>
    </rect>
   </property>
@@ -45,11 +42,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="lightOn">
+  <widget class="QPushButton" name="lightButton">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>680</y>
+     <y>690</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -61,7 +58,7 @@
   <widget class="QRadioButton" name="radioButton">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>450</x>
      <y>790</y>
      <width>41</width>
      <height>20</height>
@@ -74,7 +71,7 @@
   <widget class="QRadioButton" name="radioButton_2">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>390</x>
      <y>790</y>
      <width>41</width>
      <height>20</height>
@@ -110,24 +107,11 @@
     <string>D</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="lightOff">
+  <widget class="QPushButton" name="WindowButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>680</y>
-     <width>113</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>lightOff</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="WindowOn">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>680</y>
+     <x>160</x>
+     <y>690</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -136,37 +120,11 @@
     <string>WindowOn</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="WindowOff">
+  <widget class="QPushButton" name="DoorButton">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>680</y>
-     <width>113</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>WindowOff</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="DoorOff">
-   <property name="geometry">
-    <rect>
-     <x>620</x>
-     <y>680</y>
-     <width>113</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>DoorOff</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="DoorOn">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>680</y>
+     <x>290</x>
+     <y>690</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -175,11 +133,11 @@
     <string>DoorOn</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="break_2">
+  <widget class="QPushButton" name="breakButton">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>720</y>
+     <x>160</x>
+     <y>740</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -188,11 +146,11 @@
     <string>break</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="start">
+  <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>720</y>
+     <x>30</x>
+     <y>740</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -204,8 +162,8 @@
   <widget class="QPushButton" name="clockshtion">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>720</y>
+     <x>290</x>
+     <y>740</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -230,11 +188,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="insideCar_3">
+  <widget class="QLabel" name="insideCar_4">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>120</y>
+     <x>20</x>
+     <y>50</y>
      <width>711</width>
      <height>551</height>
     </rect>
@@ -246,7 +204,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="insideCar_4">
+  <widget class="QLabel" name="insideCar_5">
    <property name="geometry">
     <rect>
      <x>20</x>

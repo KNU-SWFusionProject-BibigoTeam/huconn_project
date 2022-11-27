@@ -32,7 +32,7 @@ class MainWindow(QMainWindow,form_main):
       # self.lightOn.clicked.connect(lambda:self.second.funtion_lightOn())
        self.base = QPixmap()
        self.base.load(".png")
-       self.base = self.base.scaled(851, 531)
+       self.base = self.base.scaled(600, 500)
        self.insideCar.setPixmap(self.base)
 
        self.clockshtion.setCheckable(True)
@@ -44,7 +44,7 @@ class MainWindow(QMainWindow,form_main):
        self.insideCar.setPixmap(self.qPixmapFileVar)
 
 
-
+# 기어 버튼 4개
        self.radio1 = QRadioButton("radio1", self)
        self.radioButton.clicked.connect(self.radio1_fun)
 
@@ -57,9 +57,20 @@ class MainWindow(QMainWindow,form_main):
        self.radio3 = QRadioButton("radio4", self)
        self.radioButton_4.clicked.connect(self.radio4_fun)
 
+# light
+       self.lightButton.setCheckable(True)
+       self.lightButton.clicked.connect(self.funtion_lightOn)
 
-       self.lightOn.clicked.connect(self.lightAction)
-       self.lightOff.clicked.connect(self.lightActionOFF)
+# window
+       self.WindowButton.setCheckable(True)
+       self.WindowButton.clicked.connect(self.funtion_windowOn)
+
+# Door
+       self.DoorButton.setCheckable(True)
+       self.DoorButton.clicked.connect(self.funtion_DoorOn)
+
+       # self.lightOn.clicked.connect(self.lightAction)
+       # self.lightOff.clicked.connect(self.lightActionOFF)
 
    def Klaxon(self, state):
        if self.clockshtion.isChecked():
@@ -67,12 +78,12 @@ class MainWindow(QMainWindow,form_main):
            qPixmapFileVar = QPixmap()
            qPixmapFileVar.load("pushimage.png")
            qPixmapFileVar = qPixmapFileVar.scaled(600, 500)
-           self.insideCar_4.setPixmap(qPixmapFileVar)
+           self.insideCar_5.setPixmap(qPixmapFileVar)
        else:
            self.clockshtion.setText("Push")
            qPixmapFileVar = QPixmap()
            qPixmapFileVar.load("")
-           self.insideCar_4.setPixmap(qPixmapFileVar)
+           self.insideCar_5.setPixmap(qPixmapFileVar)
 
    def radio1_fun(self, checked):
        if checked:
@@ -118,6 +129,120 @@ class MainWindow(QMainWindow,form_main):
            self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
            self.insideCar_2.setPixmap(self.qPixmapFileVar)
 
+# ligth function
+   def funtion_lightOn(self):
+       if self.lightButton.isChecked():
+
+           self.lightButton.setText("OFF")
+           self.light = QPixmap()
+           self.light.load("light.jpg")
+           self.light = self.light.scaled(600, 500)
+           self.insideCar_4.setPixmap(self.light)
+
+           self.second = secondwindow()
+           self.second.funtion_lightOn2()
+
+       else:
+           self.lightButton.setText("ON")
+           self.light = QPixmap()
+           self.light.load("")
+           self.light = self.light.scaled(600, 500)
+           self.insideCar_4.setPixmap(self.light)
+
+           self.second = secondwindow()
+           self.second.funtion_lightOff2()
+
+
+
+   def funtion_lightOn2(self):
+        self.lightButton.setText("OFF")
+        self.light = QPixmap()
+        self.light.load("light.jpg")
+        self.light = self.light.scaled(600, 500)
+        self.insideCar_4.setPixmap(self.light)
+
+   def funtion_lightOFF2(self):
+       self.lightButton.setText("ON")
+       self.light = QPixmap()
+       self.light.load("")
+       self.light = self.light.scaled(600, 500)
+       self.insideCar_4.setPixmap(self.light)
+
+
+
+
+
+
+# window function 함수들에 조건문
+   def funtion_windowOn(self):
+
+       if self.DoorButton.isChecked() == True:
+           if self.WindowButton.isChecked() == True:
+               self.WindowButton.setText("OFF")
+               self.OpenDoor = QPixmap()
+               self.OpenDoor.load("DOWO.png")
+               self.OpenDoor = self.OpenDoor.scaled(600, 500)
+               self.insideCar.setPixmap(self.OpenDoor)
+
+       if self.DoorButton.isChecked() == True:
+           if self.WindowButton.isChecked() == False:  # 창문 아무것도 없는 상태
+               self.WindowButton.setText("ON")
+               self.DoorAndWindowOpen = QPixmap()
+               self.DoorAndWindowOpen.load("DOWC.png")
+               self.DoorAndWindowOpen = self.DoorAndWindowOpen.scaled(600, 500)
+               self.insideCar.setPixmap(self.DoorAndWindowOpen)
+
+       if self.DoorButton.isChecked() == False:
+           if self.WindowButton.isChecked() == True:
+               self.WindowButton.setText("OFF")
+               self.base = QPixmap()
+               self.base.load("DCWO.png")
+               self.base = self.base.scaled(600, 500)
+               self.insideCar.setPixmap(self.base)
+
+       if self.DoorButton.isChecked() == False:
+           if self.WindowButton.isChecked() == False:
+               self.WindowButton.setText("ON")
+               self.Open_window = QPixmap()
+               self.Open_window.load("carimage")
+               self.Open_window = self.Open_window.scaled(600, 500)
+               self.insideCar.setPixmap(self.Open_window)
+
+# door function
+   def funtion_DoorOn(self):
+
+       if self.WindowButton.isChecked() == True:
+           if self.DoorButton.isChecked() == True:
+               self.DoorButton.setText("OFF")
+               self.DoorAndWindowOpen = QPixmap()
+               self.DoorAndWindowOpen.load("DOWO.png")
+               self.DoorAndWindowOpen = self.DoorAndWindowOpen.scaled(600, 500)
+               self.insideCar.setPixmap(self.DoorAndWindowOpen)
+
+       if self.WindowButton.isChecked() == True:
+           if self.DoorButton.isChecked() == False:
+               self.DoorButton.setText("ON")
+               self.Open_window = QPixmap()
+               self.Open_window.load("DCWO")
+               self.Open_window = self.Open_window.scaled(600, 500)
+               self.insideCar.setPixmap(self.Open_window)
+
+       if self.WindowButton.isChecked() == False:  # 창문 아무것도 없는 상태
+           if self.DoorButton.isChecked() == True:
+               self.DoorButton.setText("OFF")
+               self.OpenDoor = QPixmap()
+               self.OpenDoor.load("DOWC.png")
+               self.OpenDoor = self.OpenDoor.scaled(600, 500)
+               self.insideCar.setPixmap(self.OpenDoor)
+
+       if self.WindowButton.isChecked() == False:
+           if self.DoorButton.isChecked() == False:
+               self.DoorButton.setText("ON")
+               self.base = QPixmap()
+               self.base.load("carimage.png")
+               self.base = self.base.scaled(600, 500)
+               self.insideCar.setPixmap(self.base)
+
    def button_Second(self):
        self.second = secondwindow()
        self.second.exec_()
@@ -126,38 +251,38 @@ class MainWindow(QMainWindow,form_main):
 
 
 
-   def lightAction(self):
-        self.second = secondwindow()
-        self.second.funtion_lightOn2()
-       # self.second.hide()
-
-        self.qPixmapFileVar = QPixmap()
-        self.qPixmapFileVar.load("insideCar_light.png")
-        self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
-        self.insideCar.setPixmap(self.qPixmapFileVar)
-
-   def lightActionOFF(self):
-       self.second= secondwindow()
-       self.second.funtion_lightOff2()
-
-
-       self.qPixmapFileVar = QPixmap()
-       self.qPixmapFileVar.load("carimage.png")
-       self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
-       self.insideCar.setPixmap(self.qPixmapFileVar)
-
-
-   def lightAction2(self):
-       self.qPixmapFileVar = QPixmap()
-       self.qPixmapFileVar.load("insideCar_light.png")
-       self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
-       self.insideCar.setPixmap(self.qPixmapFileVar)
-
-   def lightActionOFF2(self):
-       self.qPixmapFileVar = QPixmap()
-       self.qPixmapFileVar.load("carimage.png")
-       self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
-       self.insideCar.setPixmap(self.qPixmapFileVar)
+   # def lightAction(self):
+   #      self.second = secondwindow()
+   #      self.second.funtion_lightOn2()
+   #     # self.second.hide()
+   #
+   #      self.qPixmapFileVar = QPixmap()
+   #      self.qPixmapFileVar.load("insideCar_light.png")
+   #      self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+   #      self.insideCar.setPixmap(self.qPixmapFileVar)
+   #
+   # def lightActionOFF(self):
+   #     self.second = secondwindow()
+   #     self.second.funtion_lightOff2()
+   #
+   #
+   #     self.qPixmapFileVar = QPixmap()
+   #     self.qPixmapFileVar.load("carimage.png")
+   #     self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+   #     self.insideCar.setPixmap(self.qPixmapFileVar)
+   #
+   #
+   # def lightAction2(self):
+   #     self.qPixmapFileVar = QPixmap()
+   #     self.qPixmapFileVar.load("insideCar_light.png")
+   #     self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+   #     self.insideCar.setPixmap(self.qPixmapFileVar)
+   #
+   # def lightActionOFF2(self):
+   #     self.qPixmapFileVar = QPixmap()
+   #     self.qPixmapFileVar.load("carimage.png")
+   #     self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+   #     self.insideCar.setPixmap(self.qPixmapFileVar)
 
 
 
