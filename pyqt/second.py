@@ -4,6 +4,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
+import first
 from first import *
 
 form_secondwindow = uic.loadUiType("second.ui")[0]
@@ -54,7 +55,7 @@ class secondwindow(QDialog, form_secondwindow):
 
 # ligth function
    def funtion_lightOn(self):
-       if self.lightOn.isChecked():
+       if self.lightOn.isChecked() == True:
 
           self.lightOn.setText("OFF")
           self.light = QPixmap()
@@ -63,9 +64,12 @@ class secondwindow(QDialog, form_secondwindow):
           self.label_light.setPixmap(self.light)
 
           self.first = MainWindow()
-          self.first.lightAction2()
+          self.first.funtion_lightOn2()
 
-       else:
+
+
+
+       elif self.lightOn.isChecked() == False:
            self.lightOn.setText("ON")
            self.light = QPixmap()
            self.light.load("")
@@ -73,7 +77,9 @@ class secondwindow(QDialog, form_secondwindow):
            self.label_light.setPixmap(self.light)
 
            self.first = MainWindow()
-           self.first.lightActionOFF2()
+           self.first.funtion_lightOFF2()
+
+
 
 
 
@@ -86,24 +92,12 @@ class secondwindow(QDialog, form_secondwindow):
        self.light = self.light.scaled(261, 531)
        self.label_light.setPixmap(self.light)
 
-       self.first = MainWindow()
-       self.first.lightAction2()
-
-   def funtion_lightOff(self):
-       self.light = QPixmap()
-       self.light.load(".png")
-       self.label_light.setPixmap(self.light)
-
-
 
 
    def funtion_lightOff2(self):
        self.light = QPixmap()
        self.light.load(".png")
        self.label_light.setPixmap(self.light)
-
-
-
 
 
 # window function 함수들에 조건문

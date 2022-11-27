@@ -19,7 +19,7 @@ class MainWindow(QMainWindow,form_main):
     super().__init__()
     self.initUI()
     self.show()
-    print("test")
+
 
 
 
@@ -139,12 +139,38 @@ class MainWindow(QMainWindow,form_main):
            self.light = self.light.scaled(600, 500)
            self.insideCar_4.setPixmap(self.light)
 
+           self.second = secondwindow()
+           self.second.funtion_lightOn2()
+
        else:
            self.lightButton.setText("ON")
            self.light = QPixmap()
            self.light.load("")
            self.light = self.light.scaled(600, 500)
            self.insideCar_4.setPixmap(self.light)
+
+           self.second = secondwindow()
+           self.second.funtion_lightOff2()
+
+
+
+   def funtion_lightOn2(self):
+        self.lightButton.setText("OFF")
+        self.light = QPixmap()
+        self.light.load("light.jpg")
+        self.light = self.light.scaled(600, 500)
+        self.insideCar_4.setPixmap(self.light)
+
+   def funtion_lightOFF2(self):
+       self.lightButton.setText("ON")
+       self.light = QPixmap()
+       self.light.load("")
+       self.light = self.light.scaled(600, 500)
+       self.insideCar_4.setPixmap(self.light)
+
+
+
+
 
 
 # window function 함수들에 조건문
