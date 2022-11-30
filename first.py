@@ -23,7 +23,7 @@ class MainWindow(QMainWindow,form_main):
     super().__init__()
     self.initUI()
     self.show()
-    print("test")
+
 
     self.second = secondwindow()
     self.second.exec_()
@@ -150,7 +150,7 @@ class MainWindow(QMainWindow,form_main):
 
            self.lightButton.setText("OFF")
            self.light = QPixmap()
-           self.light.load("light.png")
+           self.light.load("insidelight.png")
            self.light = self.light.scaled(600, 500)
            self.insideCar_4.setPixmap(self.light)
 
