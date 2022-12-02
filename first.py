@@ -1,14 +1,14 @@
 import sys
+from time import sleep
 
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import *
+import cv2
 from PyQt5 import uic
-import second
+from PyQt5.QtGui import QImage
+
 from second import *
-import time
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-import datetime
+
 
 ## 화면에따라 사이즈가 바뀌게
 ## 연결하면 새로 이미지 뜸
@@ -25,9 +25,6 @@ class MainWindow(QMainWindow,form_main):
     self.show()
 
 
-    self.second = secondwindow()
-    self.second.exec_()
-    self.show()
 
 
 
@@ -36,14 +33,12 @@ class MainWindow(QMainWindow,form_main):
 
        self.setupUi(self)
 
-      # self.second = secondwindow()
-      # self.lightOn.clicked.connect(lambda:self.second.funtion_lightOn())
+
        self.base = QPixmap()
        self.base.load(".png")
        self.base = self.base.scaled(600, 500)
        self.insideCar.setPixmap(self.base)
 
-       # self.clockshtion.setCheckable(True)
        self.clockshtion.clicked.connect(self.Klaxon)
 
        self.qPixmapFileVar = QPixmap()
@@ -65,6 +60,8 @@ class MainWindow(QMainWindow,form_main):
        self.radio3 = QRadioButton("radio4", self)
        self.radioButton_4.clicked.connect(self.radio4_fun)
 
+
+
 # light
        self.lightButton.setCheckable(True)
        self.lightButton.clicked.connect(self.funtion_lightOn)
@@ -80,8 +77,14 @@ class MainWindow(QMainWindow,form_main):
        self.breakButton.setCheckable(True)
        self.breakButton.clicked.connect(self.funtion_break)
 
-       # self.lightOn.clicked.connect(self.lightAction)
-       # self.lightOff.clicked.connect(self.lightActionOFF)
+# 두번째 창으로
+       self.GoButton.setCheckable(True)
+       self.GoButton.clicked.connect(self.GoNext)
+
+# 영상?
+       self.videoButton.clicked.connect(self.Video_to_frame)
+
+
 
 # 클락션 함수 수정
    def Klaxon(self):
@@ -146,6 +149,7 @@ class MainWindow(QMainWindow,form_main):
 
 # ligth function
    def funtion_lightOn(self):
+
        if self.lightButton.isChecked():
 
            self.lightButton.setText("OFF")
@@ -154,11 +158,8 @@ class MainWindow(QMainWindow,form_main):
            self.light = self.light.scaled(600, 500)
            self.insideCar_4.setPixmap(self.light)
 
-           self.second.funtion_lightOn()
-
-           # self.light.load("light_On.png")
-           # self.light = self.light.scaled(261, 531)
-           # self.label_light.setPixmap(self.light)
+           if self.GoButton.isChecked():
+              self.second.funtion_lightOn()
 
        else:
            self.lightButton.setText("ON")
@@ -167,7 +168,8 @@ class MainWindow(QMainWindow,form_main):
            self.light = self.light.scaled(600, 500)
            self.insideCar_4.setPixmap(self.light)
 
-           self.second.funtion_lightOff()
+           if self.GoButton.isChecked():
+              self.second.funtion_lightOff()
 
 
 # window function 함수들에 조건문
@@ -181,7 +183,8 @@ class MainWindow(QMainWindow,form_main):
                self.OpenDoor = self.OpenDoor.scaled(600, 500)
                self.insideCar.setPixmap(self.OpenDoor)
 
-               self.second.funtion_DOWO()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DOWO()
 
        if self.DoorButton.isChecked() == True:
            if self.WindowButton.isChecked() == False:  # 창문 아무것도 없는 상태
@@ -191,7 +194,8 @@ class MainWindow(QMainWindow,form_main):
                self.DoorAndWindowOpen = self.DoorAndWindowOpen.scaled(600, 500)
                self.insideCar.setPixmap(self.DoorAndWindowOpen)
 
-               self.second.funtion_DOWC()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DOWC()
 
        if self.DoorButton.isChecked() == False:
            if self.WindowButton.isChecked() == True:
@@ -201,7 +205,8 @@ class MainWindow(QMainWindow,form_main):
                self.base = self.base.scaled(600, 500)
                self.insideCar.setPixmap(self.base)
 
-               self.second.funtion_DCWO()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DCWO()
 
        if self.DoorButton.isChecked() == False:
            if self.WindowButton.isChecked() == False:
@@ -211,7 +216,8 @@ class MainWindow(QMainWindow,form_main):
                self.Open_window = self.Open_window.scaled(600, 500)
                self.insideCar.setPixmap(self.Open_window)
 
-               self.second.funtion_DCWC()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DCWC()
 
 # door function
    def funtion_DoorOn(self):
@@ -224,7 +230,8 @@ class MainWindow(QMainWindow,form_main):
                self.DoorAndWindowOpen = self.DoorAndWindowOpen.scaled(600, 500)
                self.insideCar.setPixmap(self.DoorAndWindowOpen)
 
-               self.second.funtion_DOWO()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DOWO()
 
        if self.WindowButton.isChecked() == True:
            if self.DoorButton.isChecked() == False:
@@ -234,7 +241,8 @@ class MainWindow(QMainWindow,form_main):
                self.Open_window = self.Open_window.scaled(600, 500)
                self.insideCar.setPixmap(self.Open_window)
 
-               self.second.funtion_DCWO()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DCWO()
 
        if self.WindowButton.isChecked() == False:  # 창문 아무것도 없는 상태
            if self.DoorButton.isChecked() == True:
@@ -244,7 +252,8 @@ class MainWindow(QMainWindow,form_main):
                self.OpenDoor = self.OpenDoor.scaled(600, 500)
                self.insideCar.setPixmap(self.OpenDoor)
 
-               self.second.funtion_DOWC()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DOWC()
 
        if self.WindowButton.isChecked() == False:
            if self.DoorButton.isChecked() == False:
@@ -254,7 +263,8 @@ class MainWindow(QMainWindow,form_main):
                self.base = self.base.scaled(600, 500)
                self.insideCar.setPixmap(self.base)
 
-               self.second.funtion_DCWC()
+               if self.GoButton.isChecked():
+                  self.second.funtion_DCWC()
 
 
 
@@ -264,7 +274,6 @@ class MainWindow(QMainWindow,form_main):
    def lightAction(self):
 
         self.second.funtion_lightOn2()
-       # self.second.hide()
 
         self.qPixmapFileVar = QPixmap()
         self.qPixmapFileVar.load("insideCar_light.png")
@@ -272,6 +281,7 @@ class MainWindow(QMainWindow,form_main):
         self.insideCar.setPixmap(self.qPixmapFileVar)
 
    def lightActionOFF(self):
+
 
        self.second.funtion_lightOff2()
 
@@ -289,12 +299,71 @@ class MainWindow(QMainWindow,form_main):
    def funtion_break(self):
        if self.breakButton.isChecked():
            self.breakButton.setText("OFF")
-           self.second.funtion_BREON()
+
+           if self.GoButton.isChecked():
+              self.second.funtion_BREON()
 
 
        else:
            self.breakButton.setText("ON")
-           self.second.funtion_BREOFF()
+
+           if self.GoButton.isChecked():
+              self.second.funtion_BREOFF()
+
+
+   def GoNext(self):
+
+       if self.GoButton.isChecked():
+
+          self.GoButton.setText("Back")
+          self.second = secondwindow()
+          self.second.exec_()
+          self.show()
+
+          self.GoButton.setCheckable(False)
+
+       else:
+
+          self.GoButton.setText("Go")
+          self.second.close()
+          self.GoButton.setCheckable(True)
+
+
+#  영상(미완성)
+
+   def Video_to_frame(self, MainWindow):
+
+       cap = cv2.VideoCapture('04.mp4')  # 저장된 영상 가져오기 프레임별로 계속 가져오는 듯
+
+       ###cap으로 영상의 프레임을 가지고와서 전처리 후 화면에 띄움###
+       while True:
+           self.ret, self.frame = cap.read()  # 영상의 정보 저장
+
+           if self.ret:
+               self.rgbImage = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)  # 프레임에 색입히기
+               self.convertToQtFormat = QImage(self.rgbImage.data, self.rgbImage.shape[1], self.rgbImage.shape[0],
+                                               QImage.Format_RGB888)
+
+               self.pixmap = QPixmap(self.convertToQtFormat)
+               # self.p = self.pixmap.scaled(400, 300, QtCore.Qt.IgnoreAspectRatio)  # 프레임 크기 조정
+
+               self.video_viewer_label.setPixmap(self.pixmap)
+               self.video_viewer_label.update()  # 프레임 띄우기
+
+               sleep(0.005)  # 영상 1프레임당 0.01초로 이걸로 영상 재생속도 조절하면됨 0.02로하면 0.5배속인거임
+
+
+
+           else:
+               break
+
+       cap.release()
+       cv2.destroyAllWindows()
+
+
+
+
+
 
 
 
@@ -302,4 +371,3 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = MainWindow()
     sys.exit(app.exec_())
-

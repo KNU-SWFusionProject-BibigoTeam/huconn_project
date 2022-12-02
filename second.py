@@ -232,3 +232,11 @@ class secondwindow(QDialog, form_secondwindow):
            self.base = self.base.scaled(851, 531)
            self.break_light.setPixmap(self.base)
 
+
+
+
+   #def Home(self):
+          # self.first = MainWindow()
+          # self.first.GoButton.setCheckable(False)
+          # self.close()
+
