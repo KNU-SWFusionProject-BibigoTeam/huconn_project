@@ -189,7 +189,7 @@ class MainWindow(QMainWindow,form_main):
 
            self.lightButton.setText("OFF")
            self.light = QPixmap()
-           self.light.load("insidelight.png")
+           self.light.load("Insidelight.png")
            self.light = self.light.scaled(600, 500)
            self.insideCar_4.setPixmap(self.light)
 
@@ -373,14 +373,14 @@ class MainWindow(QMainWindow,form_main):
           self.qPixmapFileVar = QPixmap()
           self.qPixmapFileVar.load("car_Speed.png")
           self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
-          self.insideCar.setPixmap(self.qPixmapFileVar)
+          self.insideCar_2.setPixmap(self.qPixmapFileVar)
 
        else:
 
           self.qPixmapFileVar = QPixmap()
-          self.qPixmapFileVar.load("insideCar.png")
+          self.qPixmapFileVar.load("")
           self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
-          self.insideCar.setPixmap(self.qPixmapFileVar)
+          self.insideCar_2.setPixmap(self.qPixmapFileVar)
 
 
 #  영상 클래스(미완성)
