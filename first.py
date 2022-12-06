@@ -6,17 +6,10 @@ import numpy as np
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtGui import QImage, QPixmap
 
-from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
-from PyQt5.QtMultimediaWidgets import QVideoWidget
 
 from second import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-
-
-## 화면에따라 사이즈가 바뀌게
-## 연결하면 새로 이미지 뜸
-
 
 form_main = uic.loadUiType("first.ui")[0]
 
