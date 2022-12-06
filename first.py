@@ -2,8 +2,12 @@ import sys
 from time import sleep
 
 import cv2
-from PyQt5 import uic
-from PyQt5.QtGui import QImage
+import numpy as np
+from PyQt5 import uic, QtWidgets
+from PyQt5.QtGui import QImage, QPixmap
+
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
+from PyQt5.QtMultimediaWidgets import QVideoWidget
 
 from second import *
 from PyQt5.QtWidgets import *
@@ -33,7 +37,6 @@ class MainWindow(QMainWindow,form_main):
 
        self.setupUi(self)
 
-
        self.base = QPixmap()
        self.base.load(".png")
        self.base = self.base.scaled(600, 500)
@@ -46,8 +49,12 @@ class MainWindow(QMainWindow,form_main):
        self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
        self.insideCar.setPixmap(self.qPixmapFileVar)
 
+       self.th = Thread(self)
 
-# 기어 버튼 4개
+
+
+
+       # 기어 버튼 4개
        self.radio1 = QRadioButton("radio1", self)
        self.radioButton.clicked.connect(self.radio1_fun)
 
@@ -82,7 +89,42 @@ class MainWindow(QMainWindow,form_main):
        self.GoButton.clicked.connect(self.GoNext)
 
 # 영상?
-       self.videoButton.clicked.connect(self.Video_to_frame)
+
+       self.videoButton.setCheckable(True)
+       self.videoButton.clicked.connect(self.cam_open)
+
+
+# 속도계
+       self.startButton.setCheckable(True)
+       self.startButton.clicked.connect(self.function_start)
+
+
+
+
+
+   def cam_open(self):
+
+       if self.videoButton.isChecked():
+          self.videoButton.setText("Stop")
+
+          self.th.working = True  # 영상 읽어오기 반복 여부 참
+          self.th.changePixmap.connect(self.setImage)
+          self.th.start()
+
+
+
+       else:
+          self.videoButton.setText("Go")
+
+          self.th.working = False  # 영상 읽어오기 반복 여부 거짓
+          self.th.exec_()
+
+
+
+
+   # 라벨에 이미지 출력하기 함수
+   def setImage(self, image):
+       self.video_viewer_label.setPixmap(QPixmap.fromImage(image))
 
 
 
@@ -320,49 +362,73 @@ class MainWindow(QMainWindow,form_main):
           self.second.exec_()
           self.show()
 
-          self.GoButton.setCheckable(False)
 
        else:
 
           self.GoButton.setText("Go")
           self.second.close()
-          self.GoButton.setCheckable(True)
+        
 
 
-#  영상(미완성)
 
-   def Video_to_frame(self, MainWindow):
 
-       cap = cv2.VideoCapture('04.mp4')  # 저장된 영상 가져오기 프레임별로 계속 가져오는 듯
+   def function_start(self):
+       if self.startButton.isChecked():
 
-       ###cap으로 영상의 프레임을 가지고와서 전처리 후 화면에 띄움###
-       while True:
-           self.ret, self.frame = cap.read()  # 영상의 정보 저장
+          self.startButton.setText("T")
 
-           if self.ret:
-               self.rgbImage = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)  # 프레임에 색입히기
-               self.convertToQtFormat = QImage(self.rgbImage.data, self.rgbImage.shape[1], self.rgbImage.shape[0],
-                                               QImage.Format_RGB888)
+          self.qPixmapFileVar = QPixmap()
+          self.qPixmapFileVar.load("car_Speed.png")
+          self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+          self.insideCar.setPixmap(self.qPixmapFileVar)
 
-               self.pixmap = QPixmap(self.convertToQtFormat)
-               # self.p = self.pixmap.scaled(400, 300, QtCore.Qt.IgnoreAspectRatio)  # 프레임 크기 조정
+       else:
 
-               self.video_viewer_label.setPixmap(self.pixmap)
-               self.video_viewer_label.update()  # 프레임 띄우기
+          self.qPixmapFileVar = QPixmap()
+          self.qPixmapFileVar.load("insideCar.png")
+          self.qPixmapFileVar = self.qPixmapFileVar.scaled(600, 500)
+          self.insideCar.setPixmap(self.qPixmapFileVar)
 
+
+#  영상 클래스(미완성)
+class Thread(QThread):
+       working = True
+       cap = None
+       video_path = "04.mp4"
+
+       changePixmap = pyqtSignal(QImage, np.ndarray)
+       recordVideo = pyqtSignal(QImage)
+
+       def run(self):
+
+           self.cap = cv2.VideoCapture(self.video_path)  # 0번 카메라 연결
+           # self.cap = cv2.VideoCapture('move_file.avi')  # 동영상 파일
+           while self.working:  # 영상 가져오기 무한 반복
                sleep(0.005)  # 영상 1프레임당 0.01초로 이걸로 영상 재생속도 조절하면됨 0.02로하면 0.5배속인거임
+               ret, frame = self.cap.read()  # 카메라에서 영상 받기 (넘파이 배열)
+               if not ret:
+                   self.cap = cv2.VideoCapture(self.video_path)
+                   continue  # 영상이 없으면 (동영상 끝 등) 반복 종료
+               # 제대로 1배속 하려면 여기서 동영상의 초당 프레임수의 역수만큼 기다려야 할 듯
 
+               rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # BGR -> RGB 변환
+               h, w, ch = rgbImage.shape  # 영상의 세로, 가로, 채널수
+               bytes_per_line = ch * w
 
+               print(type(rgbImage.data))
+               print(rgbImage.data)
+               print(type(rgbImage))
 
-           else:
-               break
+               cvc = QImage(
+                   rgbImage.data,
+                   w, h, bytes_per_line,
+                   QImage.Format_RGB888)
 
-       cap.release()
-       cv2.destroyAllWindows()
+               self.changePixmap.emit(
+                   cvc.scaled(640, 480, Qt.KeepAspectRatio),
+                   frame)
 
-
-
-
+           self.cap.release()
 
 
 
@@ -370,4 +436,5 @@ class MainWindow(QMainWindow,form_main):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = MainWindow()
+
     sys.exit(app.exec_())
